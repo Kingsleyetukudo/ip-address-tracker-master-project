@@ -1,4 +1,6 @@
-
+*{
+    box-sizing: border-box;
+}
 
 section{
     display: flex;
@@ -25,6 +27,7 @@ section{
 .input-holder{
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 input{
@@ -34,7 +37,7 @@ input{
     border-top-left-radius: 10px;
     border: none;
     padding:1rem;
-    margin: 0;
+    
 }
 
 button{
@@ -46,7 +49,6 @@ button{
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     border: none;
-    margin-left: 0;
 }
 
 ::placeholder{
@@ -91,7 +93,6 @@ span{
     width: 100%;
     position: relative;
     z-index: 0;
-
 }
 
 
@@ -103,12 +104,15 @@ span{
         flex-direction: column;
         gap: 20px;
         margin-bottom: -150px;
-
-       
     }
 
     ::placeholder{
         font-size: 10px;
+        padding-left: 10px;
+    }
+
+    .input-holder{
+        width: 100%;
     }
 
     .isp, .location, .time-zone{
@@ -123,6 +127,17 @@ span{
 
     span{
         margin: 0;
+    }
+
+    input{
+        padding:10px;
+        padding-left: 20px;
+        
+    }
+    
+    button{
+        padding: none;
+        
     }
 
 }
