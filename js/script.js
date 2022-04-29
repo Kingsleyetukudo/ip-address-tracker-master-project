@@ -1,12 +1,13 @@
-let ipAddress = document.querySelector('.address-data')
-let locationData = document.querySelector('.location-data')
-let timeZone = document.querySelector('.time-zone-data')
-let isp = document.querySelector('.isp-data')
+const ipAddress = document.querySelector('.address-data')
+const locationData = document.querySelector('.location-data')
+const timeZone = document.querySelector('.time-zone-data')
+const isp = document.querySelector('.isp-data')
 document.getElementById('submit').addEventListener('submit', loadDoc)
+const map = L.map('map').setView([0, 0], 13);
 
 function loadDoc(e) {
     const use = document.querySelector('#col').value
-    console.log(use)
+    // console.log(use)
     const xhttp = new XMLHttpRequest();
     
     xhttp.open("GET", `https://geo.ipify.org/api/v2/country,city?apiKey=at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9&ipAddress=${use}`, true);
@@ -21,18 +22,18 @@ function loadDoc(e) {
             const latitude = dataInput.location.lat
             const longitude = dataInput.location.lng
                 console.log(dataInput)
-            let map = L.map('map').setView([latitude,longitude], 13);
             
-            let greenIcon = L.icon({
+            
+            const greenIcon = L.icon({
                 iconUrl: '/images/icon-location.svg',
                 iconSize:     [30, 50], // size of the icon
             });
            
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map)
 
-        L.marker([longitude, latitude], {icon: greenIcon}).addTo(map)
+        L.marker([latitude, longitude], {icon: greenIcon}).addTo(map)
             .bindPopup('welcome')
             .openPopup();
         }
@@ -40,39 +41,39 @@ function loadDoc(e) {
 }
         
     // xhttp.send();
-    // document.querySelector('#col').value = ''
+    document.querySelector('#col').value = ''
     e.preventDefault()
     }
 
-    // function json(url) {
-    //     return fetch(url).then(res => res.json());
-    //   }
+    function json(url) {
+        return fetch(url).then(res => res.json());
+      }
       
-    //   let apiKey = 'at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9';
+    //   const apiKey = 'at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9';
     //   json(`https://geo.ipify.org/api/v2/country,city?apiKey=at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9&ipAddress`).then(data => {
 
-    //     ipAddress.innerHTML = data.ip
-    //     locationData.innerHTML = `${data.location.region}, ${data.location.country} ${data.as.asn}`
-    //     timeZone.innerHTML = data.location.timezone
-    //     isp.innerHTML = data.isp
-    //     const latitude = data.location.lat
-    //     const longitude = data.location.lng
+        ipAddress.innerHTML = data.ip
+        locationData.innerHTML = `${data.location.region}, ${data.location.country} ${data.as.asn}`
+        timeZone.innerHTML = data.location.timezone
+        isp.innerHTML = data.isp
+        const latitude = data.location.lat
+        const longitude = data.location.lng
 
-    //     let map = L.map('map').setView([longitude, latitude], 13);
+      
  
-    //     let greenIcon = L.icon({
-    //         iconUrl: '/images/icon-location.svg',
-    //         iconSize:     [30, 50], // size of the icon
-    //     });
+        let greenIcon = L.icon({
+            iconUrl: '/images/icon-location.svg',
+            iconSize:     [30, 50], // size of the icon
+        });
         
-    //     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    //     }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
         
-    //     L.marker([latitude, longitude], {icon: greenIcon}).addTo(map)
-    //         .bindPopup('welcome')
-    //         .openPopup();
-    //   });
+        L.marker([latitude, longitude], {icon: greenIcon}).addTo(map)
+            .bindPopup('welcome')
+            .openPopup();
+      });
 
 
     
