@@ -40,7 +40,7 @@ function loadDoc(e) {
         
 }
         
-    // xhttp.send();
+    xhttp.send();
     document.querySelector('#col').value = ''
     e.preventDefault()
     }
@@ -49,8 +49,8 @@ function loadDoc(e) {
         return fetch(url).then(res => res.json());
       }
       
-    //   const apiKey = 'at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9';
-    //   json(`https://geo.ipify.org/api/v2/country,city?apiKey=at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9&ipAddress`).then(data => {
+      const apiKey = 'at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9';
+      json(`https://geo.ipify.org/api/v2/country,city?apiKey=at_GWKPWwKCvCVcKYj3AYZsOV9oUDEo9&ipAddress`).then(data => {
 
         ipAddress.innerHTML = data.ip
         locationData.innerHTML = `${data.location.region}, ${data.location.country} ${data.as.asn}`

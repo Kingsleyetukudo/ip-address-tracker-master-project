@@ -51,6 +51,14 @@ button{
     border: none;
 }
 
+button:hover, input:hover{
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #1f1d1d;
+}
+
 ::placeholder{
     font-size: 14px;
 }
